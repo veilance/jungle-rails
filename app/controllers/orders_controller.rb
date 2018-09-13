@@ -2,7 +2,6 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-
     @line_items = LineItem.includes(:product).where(order_id: params[:id])
   end
 
@@ -12,7 +11,9 @@ class OrdersController < ApplicationController
 
     if order.valid?
       empty_cart!
-      redirect_to order, notice: 'Your Order has been placed.'
+        # Tell the UserMailer to send a welcome email after save
+        redirect_to order, notice: 'Your Order has been placed.'
+        UserMailer.welcome_email(order).deliver_later
     else
       redirect_to cart_path, flash: { error: order.errors.full_messages.first }
     end

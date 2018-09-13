@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Your order has been received, <%= @order.email %></h1>
+    <p>
+      Your order id number is: <%= @order.id %>.<br>
+    </p>
+
+    <% @info.each do |item|%>
+    <tr>
+      <td>Price: <%=item.item_price_cents / 100.0%></td>
+      <td>Quantity: <%=item.quantity%></td>
+      <td>Total: <%=item.total_price_cents / 100.0%></td>
+    </tr>
+    <% end %>
+  </body>
+</html>
