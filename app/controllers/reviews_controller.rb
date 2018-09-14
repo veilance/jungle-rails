@@ -1,4 +1,7 @@
 class ReviewsController < ApplicationController
+
+    before_action :current_user
+
     def create
         review = Review.new(review_params)
         review.user_id = session[:user_id]
