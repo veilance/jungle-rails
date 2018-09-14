@@ -7,9 +7,10 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   resources :sessions, only: [:new, :create]
 
+  resources :products, only: [:index, :show] do
+    resources :reviews, only: [:create]
+  end
 
-
-  resources :products, only: [:index, :show]
   resources :categories, only: [:show]
 
   resource :cart, only: [:show] do
@@ -24,9 +25,6 @@ Rails.application.routes.draw do
     resources :products, except: [:edit, :update, :show]
     resources :categories, only: [:index, :new, :create]
   end
-
-
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
