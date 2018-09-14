@@ -23,7 +23,7 @@
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
           <dt>Submit Review</dt>
-            <%= form_for product_reviews_path(@product, @review) do |f| %>
+            <%= form_for ([@product, Review.new])  do |f| %>
             <dd><%= f.text_area :description %></dd>
             <dd><%= f.select :rating, [1, 2, 3, 4, 5] %></dd>
             <dd><%= submit_tag "Submit" %></dd>
