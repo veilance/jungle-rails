@@ -132,5 +132,42 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+## PRODUCT
+
+puts "Finding or Creating Products ..."
+
+pro1 = Product.find_or_create_by! name: 'Hipster Socks'
+pro2 = Product.find_or_create_by! name: 'Red Bookshelf'
+pro3 = Product.find_or_create_by! name: 'Electric Chair'
+
+## REVIEWS
+
+puts "Re-creating Reviews ..."
+
+Review.destroy_all
+
+pro1.reviews.create!({
+  user_id:  1,
+  description: 'Hipster Socks are bad',
+  rating: 2
+})
+
+pro2.reviews.create!({
+  user_id:  2,
+  description: 'Red Bookshelfs are okay',
+  rating: 3
+})
+
+pro2.reviews.create!({
+  user_id:  3,
+  description: 'Red Bookshelfs are REALL COOOOL',
+  rating: 4
+})
+
+pro3.reviews.create!({
+  user_id:  3,
+  description: 'Electric Char is eletric',
+  rating: 4
+})
 
 puts "DONE!"
