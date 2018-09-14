@@ -22,9 +22,18 @@
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
-          <dt>Reviews:</dt>
+          <dt>Submit Review</dt>
+            <%= form_for product_reviews_path(@product, @review) do |f| %>
+            <dd><%= f.text_area :description %></dd>
+            <dd><%= f.select :rating, [1, 2, 3, 4, 5] %></dd>
+            <dd><%= submit_tag "Submit" %></dd>
+            <% end %>
+            <h1>Reviews</h1>
           <% @reviews.each do |review| %>
-          <dd><%= review.description %>----Rating: <%= review.rating %></dd>
+          <dt>Comment:</dt>
+          <dd><%= review.description %></dd>
+          <dt>Rating:</dt>
+          <dd><%= review.rating %></dd>
           <% end %>
         </dl>
       </div>
@@ -33,6 +42,7 @@
   </article>
 
   <footer>
+
 
   </footer>
 
