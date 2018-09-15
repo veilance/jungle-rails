@@ -4,7 +4,7 @@ A mini e-commerce application built with Rails 4.2 for purposes of teaching Rail
 
 ## Final Product
 
-!["Jungle UI"](https://github.com/veilance/jungle-rails/blob/master/doc/jungle.jpg?raw=true)
+!["Jungle UI"](https://github.com/veilance/jungle-rails/blob/master/doc/jungle.png?raw=true)
 
 ## Setup
 
