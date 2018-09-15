@@ -24,22 +24,25 @@
           <dd><%= @product.price %></dd>
 
           <% if current_user  %> 
-          <dt>Submit Review</dt>
+            <dt>Submit Review</dt>
             <%= form_for ([@product, Review.new])  do |f| %>
-            <dd><%= f.text_area :description %></dd>
-            <dd><%= f.select :rating, [1, 2, 3, 4, 5] %></dd>
-            <dd><%= submit_tag "Submit" %></dd>
+              <dd><%= f.text_area :description %></dd>
+              <dd><%= f.select :rating, [1, 2, 3, 4, 5] %></dd>
+              <dd><%= submit_tag "Submit" %></dd>
             <% end %>
           <% end %>
-            <h1>Reviews</h1>
-          <% @reviews.each do |review| %>
-          <dt>Comment:</dt>
-          <dd><%= review.description %></dd>
-          <dt>Rating:</dt>
-          <dd><%= review.rating %></dd>
-
-          
-          <% end %>
+          <h1>Reviews</h1>
+            <% @reviews.each do |review| %>
+            <dt>Comment:</dt>
+            <dd><%= review.description %></dd>
+            <dt>Rating:</dt>
+            <dd><%= review.rating %></dd>
+              <% if review.user == current_user %>
+                <dd>
+                <%= button_to 'Delete', product_review_path(@product, review.id), method: :delete %>
+                </dd>
+              <% end %>
+            <% end %>
         </dl>
       </div>
     </div>
